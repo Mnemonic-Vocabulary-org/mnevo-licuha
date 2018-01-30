@@ -1,10 +1,11 @@
 import axios from 'axios'
+import Env from '@/config/Env'
 
 export default () => {
+  console.log("API: ", Env());
   return axios.create({
-    baseURL: `https://mnevo-grenudi.c9users.io:8080`,
+    baseURL: Env().remote+":"+Env().port,
     headers: {
-      Auth : "TESTESTESTEST AUTH"
     }
   })
 }

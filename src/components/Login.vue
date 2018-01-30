@@ -34,7 +34,8 @@
 </template>
 
 <script>
-import RegLog from '@/services/api/RegLog'
+  import RegLog from '@/services/api/RegLog'
+
   export default {
     data() {
       return {
@@ -60,19 +61,17 @@ import RegLog from '@/services/api/RegLog'
     },
     methods: {
       async login() {
-        console.log("LOGIN method");
         try {
-          console.log("sending request");
           const test = await RegLog.send({
-              login: this.loginOrMail,
-              password: this.password
-            });
+            login: this.loginOrMail,
+            password: this.password
+          });
           this.$router.push({
             name: 'register'
           })
         } catch (err) {
-          console.error(err);
-          this.error = err
+          console.error(JSON.stringify(err));
+          this.error = err.response.data.message;
         }
       }
     }
