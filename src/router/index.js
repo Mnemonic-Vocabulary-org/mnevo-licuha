@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Root from '@/components/Root'
 import Register from '@/components/Register'
 import Main from '@/components/Main'
 import Login from '@/components/Login'
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: Login
+      name: 'root',
+      component: Root
     },
     {
       path: '/login',

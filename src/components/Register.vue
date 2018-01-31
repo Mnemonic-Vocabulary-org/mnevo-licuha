@@ -47,8 +47,20 @@
       }
     },
     methods: {
-      register() {
-
+      async register() {
+        try {
+          await RegLog.send({
+            login: this.login,
+            mail: this.email,
+            password: this.password
+          });
+          this.$router.push({
+            name: 'main'
+          })
+        } catch (err) {
+          console.error(JSON.stringify(err));
+          this.error = err.response.data.message;
+        }
       }
     }
   }

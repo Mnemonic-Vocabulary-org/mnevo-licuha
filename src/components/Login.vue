@@ -62,12 +62,12 @@
     methods: {
       async login() {
         try {
-          const test = await RegLog.send({
+          await RegLog.send({
             login: this.loginOrMail,
             password: this.password
           });
           this.$router.push({
-            name: 'register'
+            name: 'main'
           })
         } catch (err) {
           console.error(JSON.stringify(err));
