@@ -1,17 +1,17 @@
 <template>
   <v-flex xs12 sm6 md4 lg4 offset-sm3 offset-md4 offset-lg4>
-    <div class="white elevation-2">
+    <div class="white elevation-2" :style="transition">
 
       <v-toolbar flat dense v-bind:style="[transition, rotate, panelColor]"
                  dark>
 
-        <v-toolbar-title>
+        <v-toolbar-title v-bind:style="[transitionWord, rotate]">
           {{title}}
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
 
-        <v-toolbar-title class="button-link" @click="navigateTo('/'+goTo.toLowerCase())">
+        <v-toolbar-title v-bind:style="[transitionWord, rotate]" class="button-link" @click="navigateTo('/'+goTo.toLowerCase())">
           {{goTo}}
         </v-toolbar-title>
 
@@ -22,6 +22,13 @@
           No slot content defined.
         </slot>
       </div>
+      <v-toolbar flat dense v-bind:style="[styles.submit.view]" class="button-link submit">
+        <v-spacer></v-spacer>
+        <v-toolbar-title v-bind:style="[transitionWord]" >
+          {{title}}
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
     </div>
   </v-flex>
 </template>
@@ -37,10 +44,20 @@ export default {
     return {
       degree: 0,
       transition: {
-        transition: 'transform .4s ease-in-out'
+        transition: 'transform 2s'
+      },
+      transitionWord:{
+        transition: 'transform 3s'
       },
       panelColor: {
         background: 'linear-gradient(to left, #e66465, #9198e5)'
+      },
+      styles:{
+        submit:{
+          view: {
+            background: 'linear-gradient(#ffffff, #eeeeee)'
+          }
+        }
       }
     }
   },
@@ -51,7 +68,7 @@ export default {
   },
   methods: {
     navigateTo (route) {
-      this.degree += 360;
+      this.degree += 180;
       console.log(this.degree);
       this.$router.push(route);
     }
@@ -65,5 +82,9 @@ export default {
   }
   .button-link {
     cursor: pointer;
+  }
+  .submit:hover {
+    transition: transform 3s;
+    background: black;
   }
 </style>

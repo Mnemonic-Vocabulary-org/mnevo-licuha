@@ -26,14 +26,6 @@
         ></v-text-field>
       </form>
       <div class="danger-alert" v-html="error"/>
-      <div class="text-xs-center">
-        <v-btn
-          dark
-          style="background-color: #9198e5"
-          @click="register">
-          {{this.pageName}}
-        </v-btn>
-      </div>
     </panel>
   </v-layout>
 </template>
