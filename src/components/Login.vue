@@ -34,46 +34,46 @@
 </template>
 
 <script>
-  import RegLog from '@/services/api/RegLog'
+import RegLog from '@/services/api/RegLog'
 
-  export default {
-    data() {
-      return {
-        loginOrMail: '',
-        password: '',
-        error: ''
-      }
-    },
-    mounted() {
+export default {
+  data () {
+    return {
+      loginOrMail: '',
+      password: '',
+      error: ''
+    }
+  },
+  mounted () {
 
+  },
+  computed: {
+    inputCheck () {
+      console.log('wow')
+      return false
     },
-    computed: {
-      inputCheck() {
-        console.log("wow");
-        return false
-      },
-      validator(test) {
-        if (this.password.toLowerCase() === "fuck you" || this.password.toLowerCase() === "fuckyou") {
-          return "no, FUCK YOU"
-        }
-        return true
+    validator (test) {
+      if (this.password.toLowerCase() === 'fuck you' || this.password.toLowerCase() === 'fuckyou') {
+        return 'no, FUCK YOU'
       }
-    },
-    methods: {
-      async login() {
-        try {
-          await RegLog.send({
-            login: this.loginOrMail,
-            password: this.password
-          });
-          this.$router.push({
-            name: 'main'
-          })
-        } catch (err) {
-          console.error(JSON.stringify(err));
-          this.error = err.response.data.message;
-        }
+      return true
+    }
+  },
+  methods: {
+    async login () {
+      try {
+        await RegLog.send({
+          login: this.loginOrMail,
+          password: this.password
+        })
+        this.$router.push({
+          name: 'main'
+        })
+      } catch (err) {
+        console.error(JSON.stringify(err))
+        this.error = err.response.data.message
       }
     }
   }
+}
 </script>

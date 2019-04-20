@@ -9,13 +9,15 @@
           v-model="login"
           autofocus
         ></v-text-field>
-        <br>
-        <v-text-field
-          label="Email"
-          type="email"
-          v-model="email"
-        ></v-text-field>
-        <br>
+
+        <routable path="/register">
+          <v-text-field
+            label="Email"
+            type="email"
+            v-model="email"
+          ></v-text-field>
+        </routable>
+        
         <v-text-field
           label="Password"
           type="password"
@@ -23,9 +25,7 @@
           autocomplete="new-password"
         ></v-text-field>
       </form>
-      <br>
       <div class="danger-alert" v-html="error"/>
-      <br>
       <v-btn
         dark
         class="cyan"
@@ -48,8 +48,8 @@ export default {
       error: ''
     }
   },
-  mounted (){
-    console.log(this.$route);
+  mounted () {
+    console.log(this.$route)
   },
   methods: {
     async register () {

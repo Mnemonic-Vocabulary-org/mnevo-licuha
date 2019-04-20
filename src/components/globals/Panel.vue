@@ -47,9 +47,10 @@
 </template>
 
 <script>
-  function cb(compon){
+  function cb (compon) {
 
   }
+
   export default {
     props: [
       'title'

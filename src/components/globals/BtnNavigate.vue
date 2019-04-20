@@ -15,32 +15,30 @@
 
 import LogRegHeader from '@/LogRegHeader'
 <script>
-  export default {
-    props: [
-      'goTo',
-      'classes',
-    ],
-    data() {
-      return {
-        btnName: ""
-      }
-    },
-    mounted(compon) {
-      console.log("log");
-      return this.btnName = this.$refs.btn.innerText;
-    },
-    computed: {
-      isPressed() {
-        console.log(this.btnName);
-        return this.$route.path.slice(1).toLowerCase() !== this.btnName.toLowerCase()
-      }
-    },
-    methods: {
-      navigateTo(route) {
-        this.$router.push(route)
-      }
+export default {
+  props: [
+    'goTo',
+    'classes'
+  ],
+  data () {
+    return {
+      btnName: ''
+    }
+  },
+  mounted (compon) {
+    return this.btnName = this.$refs.btn.innerText
+  },
+  computed: {
+    isPressed () {
+      return this.$route.path.slice(1).toLowerCase() !== this.btnName.toLowerCase()
+    }
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
     }
   }
+}
 </script>
 
 <style scoped>

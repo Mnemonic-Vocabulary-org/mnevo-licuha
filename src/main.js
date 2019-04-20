@@ -7,17 +7,21 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Panel from '@/components/globals/Panel'
 import BtnNavigate from '@/components/globals/BtnNavigate'
+import {store} from './store'
+import Routable from './components/globals/Routable'
 
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
-Vue.component('panel', Panel);
-Vue.component('btn-navigate', BtnNavigate);
+Vue.component('panel', Panel)
+Vue.component('btn-navigate', BtnNavigate)
+Vue.component('routable', Routable)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: {App},
   template: '<App/>'
 })

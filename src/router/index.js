@@ -4,6 +4,7 @@ import Root from '@/components/Root'
 import Register from '@/components/Register'
 import Main from '@/components/Main'
 import Login from '@/components/Login'
+import LogReg from '@/components/pages/LogReg'
 
 Vue.use(Router)
 
@@ -17,12 +18,12 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: LogReg
     },
     {
       path: '/register',
       name: 'register',
-      component: Register
+      component: LogReg
     },{
       path: '/main',
       name: 'main',
