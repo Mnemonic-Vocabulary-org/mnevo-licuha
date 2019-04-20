@@ -1,6 +1,6 @@
 <template>
   <v-layout column>
-    <panel title="REGISTER">
+    <panel v-bind:title="this.pageName" v-bind:goTo="this.switchPageName">
       <form
         name="registerForm"
         autocomplete="off">
@@ -17,7 +17,7 @@
             v-model="email"
           ></v-text-field>
         </routable>
-        
+
         <v-text-field
           label="Password"
           type="password"
@@ -26,12 +26,14 @@
         ></v-text-field>
       </form>
       <div class="danger-alert" v-html="error"/>
-      <v-btn
-        dark
-        class="cyan"
-        @click="register">
-        Register
-      </v-btn>
+      <div class="text-xs-center">
+        <v-btn
+          dark
+          style="background-color: #9198e5"
+          @click="register">
+          {{this.pageName}}
+        </v-btn>
+      </div>
     </panel>
   </v-layout>
 </template>
@@ -50,6 +52,17 @@ export default {
   },
   mounted () {
     console.log(this.$route)
+  },
+  computed: {
+    path () {
+      return this.$route.path
+    },
+    pageName (){
+      return this.path.replace(/\//, '').toUpperCase()
+    },
+    switchPageName (){
+      return this.pageName.toLowerCase() === 'register' ? 'LOGIN' : 'REGISTER'
+    }
   },
   methods: {
     async register () {
