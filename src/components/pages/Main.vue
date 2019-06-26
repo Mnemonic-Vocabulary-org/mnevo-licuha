@@ -19,22 +19,23 @@
   </v-layout>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        one: {
-          one: "Just Be Patient",
-          two: "I'm working on this shit",
-        }
-      }
-    },
-    methods:{
-      nonPatient(){
-        this.one.one = "Be Calm"
-      },
-      nonPatient2(){
-        this.one.two = "Im working dammit!"
+export default {
+  data () {
+    return {
+      one: {
+        one: 'Just Be Patient',
+        two: "I'm working on this shit"
       }
     }
+  },
+  methods: {
+    nonPatient () {
+      this.one.one = 'Be Calm'
+      console.log('TESTING MODULE: ', testing('is it working?'))
+    },
+    nonPatient2 () {
+      this.one.two = 'Im working dammit!'
+    }
   }
+}
 </script>

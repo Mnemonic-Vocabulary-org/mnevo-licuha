@@ -7,7 +7,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Panel from '@/components/globals/Panel'
 import BtnNavigate from '@/components/globals/BtnNavigate'
-import {store} from './store'
+import {store} from './services/store'
 import Routable from './components/globals/Routable'
 
 Vue.config.productionTip = false

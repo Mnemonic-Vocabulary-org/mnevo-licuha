@@ -1,5 +1,5 @@
 <template>
-  <div :style="[transition]">
+  <div v-if="match">
     <slot></slot>
   </div>
 </template>
@@ -17,6 +17,9 @@ export default {
         '-webkit-transition': 'opacity 600ms, display 600ms',
         transition: 'opacity 600ms, display 600ms'
       }
+    },
+    match (){
+      return this.$route.path === this.path
     }
   }
 }

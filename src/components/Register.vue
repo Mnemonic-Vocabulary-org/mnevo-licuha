@@ -52,7 +52,7 @@ export default {
     console.log(this.$route);
   },
   methods: {
-    async register () {
+    async reg () {
       try {
         await RegLog.send({
           login: this.login,

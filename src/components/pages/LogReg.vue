@@ -1,9 +1,11 @@
 <template>
   <v-layout column>
-    <panel v-bind:title="this.pageName" v-bind:goTo="this.switchPageName">
+    <panel :current="this.pageName" :next="this.switchPageName" @submit="submit">
+      <div class="danger-alert" v-html="error"/>
       <form
         name="registerForm"
-        autocomplete="off">
+        autocomplete="off"
+      >
         <v-text-field
           label="Login"
           v-model="login"
@@ -24,8 +26,11 @@
           v-model="password"
           autocomplete="new-password"
         ></v-text-field>
+
+        <routable path="/login">
+          <v-switch v-model="memento" label="MEMENTO" color="red" ></v-switch>
+        </routable>
       </form>
-      <div class="danger-alert" v-html="error"/>
     </panel>
   </v-layout>
 </template>
@@ -39,6 +44,7 @@ export default {
       login: '',
       email: '',
       password: '',
+      memento: false,
       error: ''
     }
   },
@@ -49,24 +55,45 @@ export default {
     path () {
       return this.$route.path
     },
-    pageName (){
+    pageName () {
       return this.path.replace(/\//, '').toUpperCase()
     },
-    switchPageName (){
+    switchPageName () {
       return this.pageName.toLowerCase() === 'register' ? 'LOGIN' : 'REGISTER'
     }
   },
   methods: {
-    async register () {
-      try {
-        await RegLog.send({
+    submit () {
+      if (this.pageName === 'REGISTER') {
+        this.reg({
           login: this.login,
-          mail: this.email,
+          email: this.email,
           password: this.password
-        })
-        this.$router.push({
-          name: 'main'
-        })
+        });
+      } else if (this.pageName === 'LOGIN') {
+        this.log({
+          login: this.login,
+          remember: this.memento,
+          password: this.password
+        });
+      }
+      this.$router.push({
+        name: 'main'
+      });
+    },
+    async reg (data) {
+      try {
+        await RegLog.register(data)
+        console.log("REGISTER SENT");
+      } catch (err) {
+        console.error(JSON.stringify(err))
+        this.error = err.response.data.message
+      }
+    },
+    async log (data) {
+      try {
+        await RegLog.login(data)
+        console.log("LOGIN SENT");
       } catch (err) {
         console.error(JSON.stringify(err))
         this.error = err.response.data.message
