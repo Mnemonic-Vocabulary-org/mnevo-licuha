@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import RegLog from '@/services/api/RegLog'
+import {regLog} from '@/services/api'
 
 export default {
   data () {
@@ -69,7 +69,8 @@ export default {
           login: this.login,
           email: this.email,
           password: this.password
-        });
+        })
+        .then((input)=>console.log("RESPONSE IS: "+input));
       } else if (this.pageName === 'LOGIN') {
         this.log({
           login: this.login,
@@ -83,7 +84,7 @@ export default {
     },
     async reg (data) {
       try {
-        await RegLog.register(data)
+        return await regLog.register(data)
         console.log("REGISTER SENT");
       } catch (err) {
         console.error(JSON.stringify(err))
@@ -92,7 +93,7 @@ export default {
     },
     async log (data) {
       try {
-        await RegLog.login(data)
+        await regLog.login(data)
         console.log("LOGIN SENT");
       } catch (err) {
         console.error(JSON.stringify(err))
