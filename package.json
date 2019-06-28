@@ -25,6 +25,7 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
+    "@mdi/font": "^3.7.95",
     "autoprefixer": "^7.2.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
@@ -68,6 +69,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.31",
     "karma-webpack": "^2.0.13",
+    "material-design-icons-iconfont": "^5.0.1",
     "mocha": "^3.2.0",
     "nightwatch": "^0.9.21",
     "node-notifier": "^5.4.0",
