@@ -2,15 +2,15 @@ export default function(Api){
 	return {
 		list: 
 		{
-			get: function(prms){return Api().get('api/list', prms)},
-			del: function(prms){return Api().post('api/list', prms)}
+			get: async function(prms){return await Api().get('api/list', prms)},
+			del: async function(prms){return await Api().post('api/list', prms)}
 		},
 		item: 
 		{
-			add: function(prms){return Api().post('api/list', prms)},
-			get: function(prms){return Api().get('api/list', prms)},
-			upd: function(prms){return Api().put('api/list', prms)},
-			del: function(prms){return Api().delete('api/list', prms)}
+			add: async function(prms){return await Api().post('api/list', prms)},
+			get: async function(prms){return await Api().get('api/list', prms)},
+			upd: async function(prms){return await Api().put('api/list', prms)},
+			del: async function(prms){return await Api().delete('api/list', prms)}
 		}
 	}
 }

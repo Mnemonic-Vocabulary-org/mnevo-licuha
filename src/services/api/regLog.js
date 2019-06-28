@@ -1,7 +1,7 @@
 export default function(Api){
 	return {
-		send: function (user) {return Api().post('user', user)},
-		login: function (data) {return Api().post('api/login', data)},
-		register: function (data) {return Api().post('api/register', data)}
+		snd: async function (user) {return await Api.post('user', user)},
+		log: async function (data) {return await Api.post('api/login', data)},
+		reg: async function (data) {return await Api.post('api/register', data)}
 	}
 }

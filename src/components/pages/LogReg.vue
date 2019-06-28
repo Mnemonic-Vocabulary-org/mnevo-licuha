@@ -38,6 +38,7 @@
 <script>
 import {regLog} from '@/services/api'
 
+
 export default {
   data () {
     return {
@@ -63,42 +64,30 @@ export default {
     }
   },
   methods: {
-    submit () {
-      if (this.pageName === 'REGISTER') {
-        this.reg({
-          login: this.login,
-          email: this.email,
-          password: this.password
-        })
-        .then((input)=>console.log("RESPONSE IS: "+input));
-      } else if (this.pageName === 'LOGIN') {
-        this.log({
-          login: this.login,
-          remember: this.memento,
-          password: this.password
-        });
+    async submit () {
+      switch(this.pageName){
+        case 'REGISTER':{
+          let response = await regLog.reg({
+            login: this.login,
+            email: this.email,
+            password: this.password
+          });
+          console.log("RESPONSE IS: "+response.data);
+          break;
+        }
+        case 'LOGIN':{
+          let response = await regLog.log({
+            login: this.login,
+            remember: this.memento,
+            password: this.password
+          });
+          console.log("RESPONSE IS: "+response.data);
+          break;
+        }
       }
       this.$router.push({
         name: 'main'
       });
-    },
-    async reg (data) {
-      try {
-        return await regLog.register(data)
-        console.log("REGISTER SENT");
-      } catch (err) {
-        console.error(JSON.stringify(err))
-        this.error = err.response.data.message
-      }
-    },
-    async log (data) {
-      try {
-        await regLog.login(data)
-        console.log("LOGIN SENT");
-      } catch (err) {
-        console.error(JSON.stringify(err))
-        this.error = err.response.data.message
-      }
     }
   }
 }

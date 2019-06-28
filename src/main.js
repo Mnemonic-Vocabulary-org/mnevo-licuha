@@ -17,6 +17,7 @@ Vue.component('panel', Panel)
 Vue.component('btn-navigate', BtnNavigate)
 Vue.component('routable', Routable)
 
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
