@@ -9,6 +9,7 @@ import Panel from '@/components/globals/Panel'
 import BtnNavigate from '@/components/globals/BtnNavigate'
 import {store} from './services/store'
 import Routable from './components/globals/Routable'
+import listWithPic from './components/globals/listWithPic'
 
 Vue.config.productionTip = false
 
@@ -16,6 +17,7 @@ Vue.use(Vuetify)
 Vue.component('panel', Panel)
 Vue.component('btn-navigate', BtnNavigate)
 Vue.component('routable', Routable)
+Vue.component('list-with-pic', listWithPic)
 
 
 /* eslint-disable no-new */
