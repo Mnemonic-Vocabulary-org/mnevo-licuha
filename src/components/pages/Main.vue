@@ -12,8 +12,8 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <v-btn flat color="orange" @click="nonPatient">My Name Patients</v-btn>
-            <v-btn flat color="orange" @click="nonPatient2">Get Patients</v-btn>
+            <v-btn flat color="orange" @click="nonPatient">My Name is Patience</v-btn>
+            <v-btn flat color="orange" @click="nonPatient2">Get Patience</v-btn>
              <div flat color="orange" >
                
              <v-layout row justify-center>
@@ -40,7 +40,7 @@
           <v-spacer></v-spacer>
 
           <v-btn
-            color="green darken-1"
+            color="red darken-1"
             flat="flat"
             @click="dialog++"
           >
@@ -72,11 +72,10 @@
           :items="states"
           label="search mnewo"
           persistent-hint
-
           append-icon="search"
           :prepend-inner-icon="'add'"
           :loading="active"
-          @click:prepend="log('PREPEND CLICKED!')"
+          @click:prepend-inner="log('PREPEND CLICKED! '+model)"
           @change="(e)=>log(e)"
           @focus="active=true"
           @focusout="active=false"

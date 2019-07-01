@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 
 app.use(cors());
+app.use((req,res,next)=>{console.log("REQUEST\n"+req.ip); next()});
 app.use( express.static('dist'));
 
 app.post("/api/login",(req,res)=>{
