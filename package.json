@@ -71,7 +71,7 @@
     "karma-webpack": "^2.0.13",
     "material-design-icons-iconfont": "^5.0.1",
     "mocha": "^3.2.0",
-    "nightwatch": "^0.9.21",
+    "nightwatch": "^2.3.9",
     "node-notifier": "^5.4.0",
     "nodemon": "^1.19.1",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
